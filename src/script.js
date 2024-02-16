@@ -1,6 +1,6 @@
 
-function get_data(){
-    let formList = 
+function get_data(form){
+    let formList = form.getElementsByTagName("appliance");
     let houseSize = ;
     let peopleNumber = ;
     let hasElectricHeating = ;
@@ -10,11 +10,13 @@ function get_data(){
     }
 
     return {size: houseSize, inhabitants: peopleNumber, electricHeating: hasElectricHeating, appliances: applianceList}
+    
 }
 
 
-function calc_consumption() {
-    const houseData = get_data();
+function calc_consumption(button) {
+    let form = button.parentNode;
+    const houseData = get_data(form);
 
 }
 
