@@ -1,53 +1,34 @@
 
-<<<<<<< HEAD
 function get_data(form) {
 	let formList = form.getElementsByTagName("appliance");
-	let houseSize = ;
 	let peopleNumber = ;
+	var houseSize;
 	let hasElectricHeating = ;
-	var applianceList = ;
-	for (appliance of formList) {
-		applianceList.append(appliance);
+	if (hasElectricHeating) {
+		houseSize = ;
 	}
+	else {
+		houseSize = 0;
+	}
+	let orientation = ;
+	let isolation = ;
+	let areaType = ;
+	var applianceList = [];
+	for (appliance of formList) {
+		applianceList.push(appliance);
+	}
+	let household = ;
 
 	return {
 		size: houseSize,
 		inhabitants: peopleNumber,
 		electricHeating: hasElectricHeating,
 		appliances: applianceList,
-		orientation: orintation
+		orientation: orientation,
+		insulation: isolation,
+		zone: areaType,
+		household: household
 	}
-
-=======
-function get_data(form){
-    let formList = form.getElementsByTagName("appliance");
-    let peopleNumber = ;
-    var houseSize;
-    let hasElectricHeating = ;
-    if(hasElectricHeating){
-        houseSize = ;
-    }
-    else{
-        houseSize = 0;
-    }
-    let orientation = ;
-    let isolation = ;
-    let areaType = ;
-    var applianceList = [];
-    for(appliance of formList){
-        applianceList.push(appliance);
-    }
-
-    return {
-        size: houseSize,
-        inhabitants: peopleNumber,
-        electricHeating: hasElectricHeating,
-        appliances: applianceList,
-        orientation: orientation,
-        insulation: isolation,
-        zone: areaType
-    }
->>>>>>> refs/remotes/origin/main
 }
 
 
@@ -65,7 +46,7 @@ function calc_consumption(button) {
 			(houseData.size *
 				houseData.orientation *
 				houseData.insulation *
-				houseData.zone * 116);
+				houseData.zone * 116) * houseData.household ? 0.75 : 1;
 	}
 
 	consumo = consumo * ((houseData.inhabitants / 10) + 0.1);
