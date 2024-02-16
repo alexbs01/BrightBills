@@ -46,7 +46,7 @@ function calc_consumption(button) {
 			(houseData.size *
 				houseData.orientation *
 				houseData.insulation *
-				houseData.zone * 116) * houseData.household ? 0.75 : 1;
+				houseData.zone * 116) * houseData.household ? 1 : 0.75;
 	}
 
 	consumo = consumo * ((houseData.inhabitants / 10) + 0.1);
