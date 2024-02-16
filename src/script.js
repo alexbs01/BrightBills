@@ -1,16 +1,32 @@
 
 function get_data(form){
     let formList = form.getElementsByTagName("appliance");
-    let houseSize = ;
     let peopleNumber = ;
+    var houseSize;
     let hasElectricHeating = ;
-    var applianceList = ;
+    if(hasElectricHeating){
+        houseSize = ;
+    }
+    else{
+        houseSize = 0;
+    }
+    let orientation = ;
+    let isolation = ;
+    let areaType = ;
+    var applianceList = [];
     for(appliance of formList){
-        applianceList.append(appliance);
+        applianceList.push(appliance);
     }
 
-    return {size: houseSize, inhabitants: peopleNumber, electricHeating: hasElectricHeating, appliances: applianceList}
-    
+    return {
+        size: houseSize,
+        inhabitants: peopleNumber,
+        electricHeating: hasElectricHeating,
+        appliances: applianceList,
+        orientation: orientation,
+        insulation: isolation,
+        zone: areaType
+    }
 }
 
 
