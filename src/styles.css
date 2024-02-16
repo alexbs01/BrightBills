@@ -1,0 +1,46 @@
+:root {
+    --gradient-top: #ff9696;
+    --gradient-bottom: #ffe4d2;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(var(--gradient-top), var(--gradient-bottom));
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}   
+
+.tileInputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 66vw;
+    height: 10vh;
+}
+
+.tileInputs * {
+    width: 30%;
+}
+
+.tileInputs > input {
+    margin: 0 10px;
+}
