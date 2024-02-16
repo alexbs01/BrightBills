@@ -15,21 +15,32 @@
                     <label for="Tipo Fijo">Tipo Fijo:</label>
                     <input type="number" id="Tipo Fijo" name="Tipo Fijo" required>
                 </div>
-                <br>
+
                 <div class="tileInputs">
-                    <label for="Metros cuadrados">m^2:</label>
-                    <input type="number" id="metros cuadrados" name="metros cuadrados" required>
+                    <label for="CasaPiso"> Tipo de vivienda:</label>
+                    <select id= "CasaPiso" name = "CasaPiso">
+                        <option value = "Casa"> Casa</option>
+                        <option value = "Piso"> Piso</optio>
+                    </select>
                 </div>
                 
-                <br>
+                <div class="tileInputs">
+                    <label for="Metros cuadrados">m<sup>2</sup></label>
+                    <input type="number" id="metros cuadrados" name="metros cuadrados" min="0" required>
+                </div>
+                
+                <div class="tileInputs">
+                    <label for="Habitaciones">Habitaciones:</label>
+                    <input type="number" id="Habitaciones" name="Habitaciones" min="0" required>
+                </div>
                 <div class="tileInputs">
                     <label for="Habitantes">Habitantes:</label>
-                    <input type="number" id="Habitantes" name="Habitantes" required>
+                    <input type="number" id="Habitantes" name="Habitantes" min="0" required>
                 </div>
                 
-                <br>
-                <label for="Electrodomésticos"> Escoge un electrodoméstico:</label>
-                    <select id= "Electrodomésticos" name = "Electrodomésticos">
+                <div class="tileInputs">
+                    <label for="Electrodomesticos"> Escoge un electrodoméstico:</label>
+                    <select id= "electrodomesticos" name = "Electrodomesticos">
                         <option value = "Nevera"> Nevera</option>
                         <option value = "Nevera"> Nevera</option>
                         <option value = "Nevera"> Nevera</option>
@@ -37,9 +48,9 @@
                         <option value = "Nevera"> Nevera</option>
                         <option value = "Nevera"> Nevera</option>
                     </select>
-                <br>
+                </div>
                 
-                <br>
+
                 <div class="tileInputs">
                     <input type="submit" value="Calcular">
                 </div>

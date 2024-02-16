@@ -1,6 +1,8 @@
 :root {
     --gradient-top: #ff9696;
     --gradient-bottom: #ffe4d2;
+    --background-title-color: #424242;
+    --title-color: #ffffff;
 }
 
 body {
@@ -17,6 +19,17 @@ header {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    height: 10vh;
+    width: 100vw;
+    background: var(--background-title-color);
+    margin-bottom: 1vh;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 4em;
+    font-weight: bold;
+    color: var(--title-color);
 }
 
 main {
@@ -25,22 +38,38 @@ main {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-}   
+}
 
 .tileInputs {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    width: 66vw;
+    margin-bottom: 2vh;
+    width: 100vw;
     height: 10vh;
 }
 
 .tileInputs * {
-    width: 30%;
+    width: 50vw;
+    height: 75%;
+    font-size: 2.5vh;
+    font-weight: bold;
 }
 
 .tileInputs > input {
     margin: 0 10px;
+}
+
+input {
+    padding:5px 15px; 
+    background:#ffffff; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 15px; 
+}
+
+input:hover { 
+    background: #f2f2f2; 
 }
