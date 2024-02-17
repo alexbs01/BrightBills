@@ -1,7 +1,7 @@
 :root {
-    --gradient-top: #ff9696;
-    --gradient-bottom: #ffe4d2;
-    --background-title-color: #424242;
+    --gradient-top: #5053a0;
+    --gradient-bottom: #372e55;
+    --background-title-color: rgb(22, 15, 148);
     --title-color: #ffffff;
 }
 
@@ -9,13 +9,12 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 100%;
     background: linear-gradient(var(--gradient-top), var(--gradient-bottom));
 }
 
 header {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
@@ -30,35 +29,61 @@ header h1 {
     font-size: 4em;
     font-weight: bold;
     color: var(--title-color);
+    text-align: center;
 }
 
 main {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row; /* Cambiamos la dirección a columnas */
     box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-sizing: border-box;
+    width: 100vw;
+    height: 90vh;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 2vh;
 }
 
 .tileInputs {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin-left: 5vw;
     margin-bottom: 2vh;
-    width: 100vw;
-    height: 10vh;
+    width: 40%; /* Ancho del 45% para dejar espacio para el margen */
+    max-width: 40vw; /* Ancho máximo para evitar que los elementos sean demasiado anchos */
+    margin-right: 5%; /* Margen derecho entre las columnas */
 }
 
-.tileInputs * {
-    width: 50vw;
+.electrico {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 5vw;
+    margin-bottom: 2vh;
+    width: 100vw; /* Ancho del 45% para dejar espacio para el margen */
+    max-width: 90vw; /* Ancho máximo para evitar que los elementos sean demasiado anchos */
+    margin-right: 5%; /* Margen derecho entre las columnas */
+    height: 8vh;
+}
+
+.tileInputs *, .electrico * {
+    width: 90%;
     height: 75%;
     font-size: 2.5vh;
     font-weight: bold;
-}
-
-.tileInputs > input {
-    margin: 0 10px;
 }
 
 input {
@@ -72,4 +97,9 @@ input {
 
 input:hover { 
     background: #f2f2f2; 
+}
+
+li {
+    list-style: none;
+    font-size: 4em;
 }
