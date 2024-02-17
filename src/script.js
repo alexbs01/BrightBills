@@ -109,7 +109,7 @@ function change_heating(){
 	if (heating.options[heating.selectedIndex].text == "No electrico") {
 		houseField.setAttribute("required", false);
 		hideableArea.style.display = "none";
-	  } else {
+	} else {
 		hideableArea.style.display = "flex";
 		houseField.setAttribute("required", true);
 	}
