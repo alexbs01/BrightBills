@@ -178,8 +178,10 @@ li {
     border-radius: 15px;
 }
 
-ul li span{
+li span{
+    position: relative;
     align-self: center;
+    left: 18%;
 }
     
 #Añadir, #Calcular {
