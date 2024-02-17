@@ -212,6 +212,7 @@ select {
 
 #resultContainer {
     display: none;
+    
     background-color: #23a3ca; /* Cambia el color de fondo al pasar el ratón */
 
 }
