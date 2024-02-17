@@ -17,12 +17,48 @@ const list = document.getElementById("Lista");
 const heating = document.getElementById("Tipo de calefaccion");
 const hideableArea = document.getElementById("hideableArea");
 const form = document.getElementById("formulario");
+const formFact = document.getElementById("formFact");
 const fixedButton = document.getElementById("boton-fijo");
 const fixedForm = document.getElementById("Form-Fijo");
 const feeButton = document.getElementById("boton-tarifa");
 const feeForm = document.getElementById("Form-Factura");
 const resultContainer = document.getElementById("resultContainer");
+const buttonTCon = document.getElementById("BotonCDH");
+const buttonTSin = document.getElementById("BotonSDH");
+//const caltTarifaa = document.getElementById("calcTarifa"); // Con esta línea, Tarifa no va
 
+formFact.addEventListener('submit', function(event){
+	caltTarifaa();
+	event.preventDefault();
+})
+
+var discriminante = true;
+buttonTCon.addEventListener('click', function(){
+	discriminante = true;
+	buttonTCon.classList.add("active");
+	buttonTSin.classList.remove("active");
+})
+buttonTSin.addEventListener('click', function(){
+	discriminante = false;
+	buttonTCon.classList.remove("active");
+	buttonTSin.classList.add("active");
+	
+})
+
+
+function caltTarifaa(){
+    var consumo = document.getElementById("ConsumoT").value;
+    var importe = document.getElementById("PrecioT").value;
+    var out = dhour(Number(consumo), Number(importe), discriminante);
+    var lista = document.getElementById("listaTarifas");
+	lista.innerHTML='';
+
+	out.forEach(element => {
+		var li = document.createElement("li");
+		li.appendChild(document.createTextNode(element));
+		lista.appendChild(li);
+	});
+}
 
 var amounts = {"nevera": 0, }
 
@@ -69,12 +105,13 @@ addButton.addEventListener('click', function () {
 
 function change_heating(){
 	hideableArea.classList.toggle("hidden");
-	if (heating.value == "No electrico") {
-		//hideableArea.style.maxHeight = null;
+	houseField = document.getElementById("metros cuadrados");
+	if (heating.options[heating.selectedIndex].text == "No electrico") {
+		houseField.setAttribute("required", false);
 		hideableArea.style.display = "none";
 	  } else {
-		//hideableArea.style.maxHeight = hideableArea.scrollHeight + 'px';
 		hideableArea.style.display = "flex";
+		houseField.setAttribute("required", true);
 	}
 }
 
@@ -83,17 +120,17 @@ heating.addEventListener('change', function (){
 })
 
 function get_data(form) {
-	//let formList = document.getElementsByClassName("appliance");
-	let powerCapacity = document.getElementById("Potencia Contratada").value;
-	let peopleNumber = document.getElementById("Habitantes").value;
-	var houseSize;
-	let hasElectricHeating = heating.value;
+	let hasElectricHeating = Number(heating.value);
 	if (hasElectricHeating) {
 		houseSize = document.getElementById("metros cuadrados").value;
 	}
 	else {
 		houseSize = 0;
 	}
+	//let formList = document.getElementsByClassName("appliance");
+	let powerCapacity = document.getElementById("Potencia Contratada").value;
+	let peopleNumber = document.getElementById("Habitantes").value;
+	var houseSize;
 	let orientation = document.getElementById("Orientacion").value;
 	let isolation = document.getElementById("Aislamiento").value;
 	let areaType = document.getElementById("Clima").value;
@@ -133,6 +170,7 @@ function get_data(form) {
 
 
 function calc_consumption(form) {
+	
 	const houseData = get_data(form);
 
 	var consumo = 0;
@@ -144,7 +182,7 @@ function calc_consumption(form) {
 			(houseData.size *
 				houseData.orientation *
 				houseData.insulation *
-				houseData.zone * 116) * houseData.household * 0.25;
+				houseData.zone * 116) * houseData.household/25;
 	}
 
 	consumob = consumo * ((houseData.inhabitants / 10) + 0.1)/1000;
@@ -224,3 +262,38 @@ function fijaToVariabol(consumos, startDate, endDate, cost) {
 
 	
 }*/
+
+const prices = [
+	{ empresa: "Endesa", nD: 0.1, D: [0.07,0.10,0.16] },
+	{ empresa: "Repsol", nD: 0.13, D: [0.8,0.12,0.15] },
+	{ empresa: "Naturgy", nD: 0.11, D: [0.9,0.11,0.13] },
+]
+
+function dhour(consumo, importe, tipo) {
+	var out = [];
+	var pV = 0.51;
+	var pL = 0.21;
+	var pP = 0.28;
+
+	if (tipo) {
+		var salida = importe / consumo;
+	} else {
+		var salidas = [consumo * pV, consumo * pL, consumo * pP];
+	}
+
+	prices.forEach(element => {
+		if (tipo) {
+			if (element.nD < salida) out.push(element.empresa + ": " + (element.nD * consumo).toString())
+		} else {
+			if ((element.D[0] * salidas[0] + element.D[1] * salidas[1] + element.D[2] * salidas[2]) < importe) {
+				out.push(
+					element.empresa +
+					": " +
+					(element.D[0] * salidas[0] + element.D[1] * salidas[1] + element.D[2] * salidas[2]).toString())
+			}
+		}
+	});
+
+	return out;
+}
+

@@ -100,11 +100,7 @@
                     <div class="tileInputs">
                         <button class="main-button" type = "button" id = "Añadir">Añadir</button>
                     </div>
-                        
-                    <div>
                         <ul id = "Lista"></ul>
-                    </div>
-
                     <div class="tileInputs">
                         <input id="Calcular" type="submit" value="Calcular">
                     </div>
@@ -114,19 +110,15 @@
                 </form>
             </div>  
             <div id = "Form-Factura">
-                <form method="get">
+                <form id = "formFact" method="get">
                         <div class="row">
                                 <p>Escoge un tipo de tarifa:</p>
                         </div>
                     <div class="row">
-                        <div id = "BotonCDH">
-                            <button type = "button"> Con Discreción Horaria </button>
-                        </div>
+                        <button type = "button" class = "discrimination-button active" id = "BotonCDH"> Con Discriminación Horaria </button>
                     </div>
                     <div class="row">
-                        <div id = "BotonSDH">
-                            <button type = "button"> Sin Discreción Horaria </button>
-                        </div>
+                        <button type = "button" class = "discrimination-button" id = "BotonSDH"> Sin Discriminación Horaria </button>
                     </div>
 
                     <div class="row">
@@ -144,16 +136,12 @@
                     </div>
                     
                     <div class="tileInputs">
-                        <input id="calcTarifa" type="button" value="Calcular">
+                        <input id="calcTarifa" type="submit" value="Calcular">
                     </div>
     
                     <div>
-                        <ul id = "Lista"></ul>
+                        <ul id = "listaTarifas"></ul>
                     </div>
-
-                <div>
-                    <p id="resultTarifa" name = "Resultado">Resultado </p>
-                </div>
                 
             </form>
         </div>
