@@ -126,7 +126,6 @@ form {
     height: 100%;
     font-size: 3em;
     border-radius: 15px; 
-
 }
 
 input {
@@ -135,7 +134,7 @@ input {
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
-    border-radius: 15px; 
+    border-radius: 15px;
 }
 
 input:hover { 
@@ -161,6 +160,18 @@ li:nth-child(odd) {
     height: 100%;
     font-size: 3em;
     background: #ffffff;
+    align-content: center;
+    justify-content: center;
+}
+
+.main-button {
+    text-align: center;
+    justify-content: center;
+}
+
+.tileInputs #Añadir {
+    text-align: center;
+    justify-content: center;
 }
 
 #Añadir:hover, #Calcular:hover {

@@ -6,7 +6,7 @@ const submitButton = document.getElementById("Calcular");
 
 function addToList(){
 	let appliance = document.getElementById("Electrodomesticos");
-	let applianceName = appliance.value;
+	let applianceName = appliance.options[appliance.selectedIndex].text;
 	var listItem = document.createElement("li");
 	var nameField = document.createElement('span');
 
@@ -16,7 +16,7 @@ function addToList(){
 	var applianceLabel = document.createElement("select");
 	for (var i = 0; i < labels.length; i++) {
 		var option = document.createElement("option");
-		option.value = labels[i];
+		option.value = 0.7 + i/10;
 		option.text = labels[i];
 		applianceLabel.appendChild(option);
 	}
