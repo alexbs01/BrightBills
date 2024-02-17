@@ -1,6 +1,8 @@
 :root {
-    --gradient-top: #5053a0;
-    --gradient-bottom: #372e55;
+    /*--gradient-top: #5053a0;
+    --gradient-bottom: #372e55;*/
+    --gradient-top: #505063;
+    --gradient-bottom: #2e2c36;
     --background-title-color: rgb(255, 255, 255);
     --title-color: #ffffff;
     --color-button-header: rgb(64, 22, 141);
