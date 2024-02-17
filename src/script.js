@@ -1,3 +1,17 @@
+function init(){
+	localStorage.setItem("Nevera", "0");
+	localStorage.setItem("Vitroceramica", "0");
+	localStorage.setItem("Microondas", "0");
+	localStorage.setItem("Horno", "0");
+	localStorage.setItem("Lavavajillas", "0");
+	localStorage.setItem("Lavadora", "0");
+	localStorage.setItem("Secadora", "0");
+	localStorage.setItem("Plancha", "0");
+	localStorage.setItem("Aire Acondicionado", "0");
+}
+
+init();
+
 const addButton = document.getElementById("Añadir");
 const list = document.getElementById("Lista");
 const heating = document.getElementById("Tipo de calefaccion");
@@ -10,6 +24,7 @@ const feeForm = document.getElementById("Form-Factura");
 const resultContainer = document.getElementById("resultContainer");
 
 
+var amounts = {"nevera": 0, }
 
 function addToList(){
 	let appliance = document.getElementById("Electrodomesticos");
@@ -19,7 +34,7 @@ function addToList(){
 
 	nameField.textContent = applianceName;
 	listItem.appendChild(nameField);
-	const labels = ["A", "B", "C", "D", "E", "F", "G"];
+	/*const labels = ["A", "B", "C", "D", "E", "F", "G"];
 	var applianceLabel = document.createElement("select");
 	for (var i = 0; i < labels.length; i++) {
 		var option = document.createElement("option");
@@ -27,13 +42,20 @@ function addToList(){
 		option.text = labels[i];
 		applianceLabel.appendChild(option);
 	}
-	listItem.appendChild(applianceLabel);
+	listItem.appendChild(applianceLabel);*/
+	var appNum = Number(localStorage.getItem(applianceName))+1;
+	appNum = appNum.toString();
+	localStorage.setItem(applianceName, appNum);
+
 
 	let deleteBtn = document.createElement("button");
 	deleteBtn.classList.add('delete');
 	deleteBtn.innerText = "\u00d7";
 	deleteBtn.addEventListener("click", function(e){
+		let name = e.target.parentElement.querySelector("span").textContent;
 		e.target.parentElement.remove();
+		localStorage.setItem(name, (Number(localStorage.getItem(name))-1).toString());
+
 	}, false);
 	listItem.appendChild(deleteBtn);
 	listItem.classList.add("appliance");
@@ -75,16 +97,26 @@ function get_data(form) {
 	let orientation = document.getElementById("Orientacion").value;
 	let isolation = document.getElementById("Aislamiento").value;
 	let areaType = document.getElementById("Clima").value;
-	var applianceList = [];
-	let prices = document.querySelectorAll("ul li select");
+	var applianceList = [
+		Number(localStorage.getItem("Nevera"))*300,
+		Number(localStorage.getItem("Horno"))*1500,
+		Number(localStorage.getItem("Miroondas"))*1200,
+		Number(localStorage.getItem("Lavadora"))*2000,
+		Number(localStorage.getItem("Secadora"))*270,
+		Number(localStorage.getItem("Vitrocerámica"))*1500,
+		Number(localStorage.getItem("Lavavajillas"))*1850,
+		Number(localStorage.getItem("Plancha"))*1500,
+		Number(localStorage.getItem("Aire Acondicionado"))*1450
+	];
+	//let prices = document.querySelectorAll("ul li select");
 	/*for(var i in formList){
 		//var appliance = formList[i];
 		var estimateConsumption = formList[i].querySelector("select").value;
 		applianceList.push(estimateConsumption);
 	}*/
-	for(var i in prices){
+	/*for(var i in prices){
 		applianceList.push(prices[i].v);
-	}
+	}*/
 	let household = document.getElementById("CasaPiso").value;
 	return {
 		power: powerCapacity,
@@ -112,13 +144,18 @@ function calc_consumption(form) {
 			(houseData.size *
 				houseData.orientation *
 				houseData.insulation *
-				houseData.zone * 116) * houseData.household;
+				houseData.zone * 116) * houseData.household * 0.25;
 	}
 
-	consumo = consumo * ((houseData.inhabitants / 10) + 0.1)/1000;
+	consumob = consumo * ((houseData.inhabitants / 10) + 0.1)/1000;
+	consumoa = (consumo)/1000;
+
 	const resultContainer = document.getElementById("resultContainer");
-	resultContainer.textContent = `Result: ${consumo} kWh`;
+	resultContainer.textContent = `Consumo máximo estadístico: ${consumob} kWh\n
+	Consumo máximo teórico: ${consumoa} kWh `;
 	resultContainer.style.display = "flex";
+	//localStorage.clear;
+	//init();
 }
 
 form.addEventListener('submit', function (event){
