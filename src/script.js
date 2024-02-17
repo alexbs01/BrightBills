@@ -54,3 +54,40 @@ function calc_consumption(button) {
 	return consumo;
 }
 
+const url = "https://api.esios.ree.es/archives/70/download_json?date=";
+
+function fijaToVariabol(consumos, startDate, endDate, cost) {
+	var prices = [];
+	var j = 0;
+	for (var d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
+		fetch(url + d.toISOString().substring(0, 10))
+			.then(response => {
+				if (!response.ok) {
+					throw new Error('Network response was not ok');
+				}
+				response = JSON.parse(response.json()).PVPC;
+				for (var i = 0; i <= 24; i++) {
+					prices[j + i] = { hour: i, PCB: response[i].PCB, CYM: response[i].CYM };
+				}
+			})
+			.then(data => {
+				console.log(data);
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+		j = j + 24;
+	}
+
+	for (var i = 0; i<= consumos.lenght(); i++){
+		prices[i]= consumos[i]*prices[i];
+	}
+
+
+	var sumCosts = 0;
+	prices.forEach(element => {
+		sum = sum+element;
+	});
+
+	
+}
