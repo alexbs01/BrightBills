@@ -3,53 +3,95 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="styles.css">
-        <title>Calculadora de electricidad</title>
+        <title>Calculadora de Tipo Fijo Recomendado</title>
     </head>
     <body>
         <header>
-            <h1>Calculadora de electricidad</h1>
+            <h1>Calculadora de Tipo Fijo Recomendado</h1>
         </header>
         <main>
             <form method="get">
-                <div class="tileInputs">
-                    <label for="Tipo Fijo">Tipo Fijo:</label>
-                    <input type="number" id="Tipo Fijo" name="Tipo Fijo" required>
-                </div>
+                <div class="row">
+                    <div class="tileInputs">
+                        <label for="Tipo Fijo">Tipo Fijo:</label>
+                        <input type="number" id="Tipo Fijo" name="Tipo Fijo" required>
+                    </div>
 
-                <div class="tileInputs">
-                    <label for="CasaPiso"> Tipo de vivienda:</label>
-                    <select id= "CasaPiso" name = "CasaPiso">
-                        <option value = "Casa"> Casa</option>
-                        <option value = "Piso"> Piso</optio>
-                    </select>
+                    <div class="tileInputs">
+                        <label for="Tipo de calefacción"> Tipo de calefacción:</label>
+                        <select id= "Tipo de calefacción" name = "Tipo de calefacción">
+                            <option value = "Eléctrico"> Eléctrico</option>
+                            <option value = "No electrico"> No electrico</option>
+                        </select>
+                    </div>
+                    
+                    <div class="tileInputs">
+                        <label for="CasaPiso"> Tipo de vivienda:</label>
+                        <select id= "CasaPiso" name = "CasaPiso">
+                            <option value = "Casa"> Casa</option>
+                            <option value = "Piso"> Piso</option>
+                        </select>
+                    </div>
                 </div>
                 
-                <div class="tileInputs">
-                    <label for="Metros cuadrados">m<sup>2</sup></label>
-                    <input type="number" id="metros cuadrados" name="metros cuadrados" min="0" required>
+                <div class="row">
+                    <div class="tileInputs">
+                        <label for="Clima"> Tipo de clima:</label>
+                        <select id= "Clima" name = "Clima">
+                            <option value = "Muy Frío"> Muy Frío</option>
+                            <option value = "Frío"> Frío</option>
+                            <option value = "Normal"> Normal</option>
+                            <option value = "Cálido"> Cálido</option>
+                            <option value = "Muy cálido"> Muy cálido</option>
+                        </select>
+                    </div>
+
+                    <div class="tileInputs">
+                        <label for="Tipo de calefacción"> Tipo de calefacción:</label>
+                        <select id= "Tipo de calefacción" name = "Tipo de calefacción">
+                            <option value = "Eléctrico"> Eléctrico</option>
+                            <option value = "No electrico"> No electrico</option>
+                        </select>
+                    </div>
                 </div>
                 
-                <div class="tileInputs">
-                    <label for="Habitaciones">Habitaciones:</label>
-                    <input type="number" id="Habitaciones" name="Habitaciones" min="0" required>
-                </div>
-                <div class="tileInputs">
-                    <label for="Habitantes">Habitantes:</label>
-                    <input type="number" id="Habitantes" name="Habitantes" min="0" required>
+                <div class="row">
+                    <div class="tileInputs">
+                        <label for="Metros cuadrados">m<sup>2</sup></label>
+                        <input type="number" id="metros cuadrados" name="metros cuadrados" min="0" required>
+                    </div>
+            
+                    <div class="tileInputs">
+                        <label for="Habitantes">Habitantes:</label>
+                        <input type="number" id="Habitantes" name="Habitantes" min="0" required>
+                    </div>
                 </div>
                 
-                <div class="tileInputs">
+
+                <div class="electrico">
                     <label for="Electrodomesticos"> Escoge un electrodoméstico:</label>
-                    <select id= "electrodomesticos" name = "Electrodomesticos">
-                        <option value = "Nevera"> Nevera</option>
-                        <option value = "Nevera"> Nevera</option>
-                        <option value = "Nevera"> Nevera</option>
-                        <option value = "Nevera"> Nevera</option>
-                        <option value = "Nevera"> Nevera</option>
-                        <option value = "Nevera"> Nevera</option>
+                    <select id= "Electrodomesticos" name = "Electrodomesticos">
+                        <option value = "Vitroceramica"> Vitroceramica</option>
+                        <option value = "Microondas"> Microondas</option>
+                        <option value = "Horno"> Horno</option>
+                        <option value = "Lavavajillas"> Lavavajillas</option>
+                        <option value = "Termo eléctrico"> Termo electrico</option>
+                        <option value = "Lavadora"> Lavadora</option>
+                        <option value = "Secadora"> Secadora</option>
+                        <option value = "Plancha"> Plancha</option>
+                        <option value = "Aire Acondicionado"> Aire Acondicionado</option>
+                        <option value = "Radiador eléctrico"> Radiador Eléctrico</option>
+                        <option class = "special" value = "Punto de carga"> Punto de carga</option>
                     </select>
                 </div>
                 
+                <div class="tileInputs">
+                    <button type = "button" id = "Añadir">Añadir</button>
+                </div>
+                    
+                <div>
+                    <ul id = "Lista"></ul>
+                </div>
 
                 <div class="tileInputs">
                     <input type="submit" value="Calcular">
@@ -57,6 +99,6 @@
                 
             </form>
         </main>
-        
+        <script src="script.js"></script>
     </body>
 </html>

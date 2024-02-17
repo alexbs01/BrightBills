@@ -1,5 +1,32 @@
+const addButton = document.getElementById("Añadir");
+const list = document.getElementById("Lista");
 
-function get_data(form) {
+function addToList(){
+	let appliance = document.getElementById("Electrodomesticos");
+	let applianceName = appliance.value;
+	var listItem = document.createElement("li");
+	var nameField = document.createElement('span');
+	nameField.textContent = applianceName;
+	listItem.appendChild(nameField);
+	if(!appliance.classList.contains("special")){
+		const labels = ["A", "B", "C", "D", "E", "F", "G"];
+		var applianceLabel = document.createElement("select");
+		for (var i = 0; i < labels.length; i++) {
+			var option = document.createElement("option");
+			option.value = labels[i];
+			option.text = labels[i];
+			applianceLabel.appendChild(option);
+		}
+		listItem.appendChild(applianceLabel);
+	}
+	list.appendChild(listItem);
+}
+addButton.addEventListener('click', function () {
+    addToList();
+})
+
+
+/*function get_data(form) {
 	let formList = form.getElementsByTagName("appliance");
 	let peopleNumber = ;
 	var houseSize;
@@ -52,7 +79,7 @@ function calc_consumption(button) {
 	consumo = consumo * ((houseData.inhabitants / 10) + 0.1);
 
 	return consumo;
-}
+}*/
 
 const url = "https://api.esios.ree.es/archives/70/download_json?date=";
 
