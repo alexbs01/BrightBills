@@ -108,7 +108,7 @@ form {
     display: flex;
     flex-direction: column;
     margin-left: 5vw;
-    margin-bottom: 5vh;
+    margin-bottom: 3vh;
     width: 40%; /* Ancho del 45% para dejar espacio para el margen */
     max-width: 40vw; /* Ancho máximo para evitar que los elementos sean demasiado anchos */
     margin-right: 5%; /* Margen derecho entre las columnas */
@@ -123,7 +123,8 @@ form {
     width: 90vw; /* Ancho del 45% para dejar espacio para el margen */
     max-width: 90vw; /* Ancho máximo para evitar que los elementos sean demasiado anchos */
     margin-right: 5%; /* Margen derecho entre las columnas */
-    height: 8vh;
+    height: 10vh;
+    font-size: 2em;
 }
 
 .tileInputs *, .electrico * {
@@ -257,13 +258,9 @@ select {
 
 #resultContainer {
     display: none;
-    
     background-color: #3e3854; /* Cambia el color de fondo al pasar el ratón */
-
     border-radius: 5px;
-
     margin: 10px 20px;
-    
     font-size: 1.5em;
 }
 
@@ -293,6 +290,14 @@ select {
     margin-bottom: 0;
     align-items: center;
 
+}
+
+.discrimination-button{
+    margin-bottom: 2%;
+}
+
+.billInput{
+    margin-bottom: 2%;
 }
 
 .discrimination-button.active{
@@ -378,6 +383,10 @@ input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
+}
+
+#listaTarifas{
+    
 }
 
 #resultContainerTarifa {

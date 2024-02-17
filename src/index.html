@@ -33,8 +33,6 @@ SPDX-License-Identifier: Apache-2.0
                             <label for="Habitantes">Habitantes:</label>
                             <input type="number" id="Habitantes" name="Habitantes" min="0" required>
                         </div>
-                    </div>
-                    <div class = "row">
                         <div class="tileInputs">
                             <label for="Tipo de calefaccion"> Tipo de calefacción:</label>
                             <select id= "Tipo de calefaccion" name = "Tipo de calefacción">
@@ -62,6 +60,8 @@ SPDX-License-Identifier: Apache-2.0
                                     <option value = "0.88"> Muy cálido</option>
                                 </select>
                             </div>
+                            <div class="tileInputs">
+                            </div>
                         </div>
                     
                         <div class="row">
@@ -78,8 +78,6 @@ SPDX-License-Identifier: Apache-2.0
                                     <option value = "1"> Oeste</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="tileInputs">
                                 <label for="Aislamiento">Aislamiento</label>
                                 <select id= "Aislamiento" name = "Aislamiento">
@@ -133,14 +131,14 @@ SPDX-License-Identifier: Apache-2.0
                     <div class="row">
                         <div class="tileInputs">
                             <label for="ConsumoT">Consumo total de la factura (Kw/h):</label>
-                            <input type="number" id="ConsumoT" name="ConsumoT" min="0" required>
+                            <input type="number" class = "billInput" id="ConsumoT" name="ConsumoT" min="0" required>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="tileInputs">
                             <label for="PrecioT">Precio total de la factura (€):</label>
-                            <input type="number" id="PrecioT" name="PrecioT" min="0" required>
+                            <input type="number" class = "billInput" id="PrecioT" name="PrecioT" min="0" required>
                         </div>
                     </div>
                     
