@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2024 Alejandro Bezerra
+# SPDX-FileCopyrightText: 2024 Anton Souto
+# SPDX-FileCopyrightText: 2024 Enrique Adega
+# SPDX-FileCopyrightText: 2024 Guillen Porto
+#
+# SPDX-License-Identifier: Apache-2.0
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
