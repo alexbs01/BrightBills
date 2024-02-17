@@ -258,13 +258,9 @@ select {
 
 #resultContainer {
     display: none;
-    
     background-color: #3e3854; /* Cambia el color de fondo al pasar el ratón */
-
     border-radius: 5px;
-
     margin: 10px 20px;
-    
     font-size: 1.5em;
 }
 
