@@ -59,12 +59,13 @@ function caltTarifaa(){
     var out = dhour(Number(consumo), Number(importe), discriminante);
     var lista = document.getElementById("listaTarifas");
 	lista.innerHTML='';
-
 	out.forEach(element => {
+
 		var li = document.createElement("li");
 		li.appendChild(document.createTextNode(element));
 		lista.appendChild(li);
 	});
+
 }
 
 var amounts = {"nevera": 0, }
@@ -92,7 +93,7 @@ function addToList(){
 
 
 	let deleteBtn = document.createElement("button");
-	deleteBtn.classList.add('delete');
+	deleteBtn.classList.add("delete");
 	deleteBtn.innerText = "\u00d7";
 	deleteBtn.addEventListener("click", function(e){
 		let name = e.target.parentElement.querySelector("span").textContent;
@@ -114,7 +115,7 @@ function change_heating(){
 	hideableArea.classList.toggle("hidden");
 	houseField = document.getElementById("metros cuadrados");
 	if (heating.options[heating.selectedIndex].text == "No electrico") {
-		houseField.setAttribute("required", false);
+		houseField.removeAttribute("required");
 		hideableArea.style.display = "none";
 	} else {
 		hideableArea.style.display = "flex";
@@ -194,6 +195,9 @@ function calc_consumption(form) {
 
 	consumob = consumo * ((houseData.inhabitants / 10) + 0.1)/1000;
 	consumoa = (consumo)/1000;
+
+	consumoa = consumoa.toFixed(2);
+	consumob = consumob.toFixed(2);
 
 	const resultContainer = document.getElementById("resultContainer");
 	resultContainer.textContent = `Consumo máximo estadístico: ${consumob} kWh\n
@@ -290,17 +294,19 @@ function dhour(consumo, importe, tipo) {
 
 	prices.forEach(element => {
 		if (tipo) {
-			if (element.nD < salida) out.push(element.empresa + ": " + (element.nD * consumo).toString())
+			if (element.nD < salida) out.push(element.empresa + ": " + (element.nD * consumo).toFixed(2).toString())
 		} else {
 			if ((element.D[0] * salidas[0] + element.D[1] * salidas[1] + element.D[2] * salidas[2]) < importe) {
 				out.push(
 					element.empresa +
 					": " +
-					(element.D[0] * salidas[0] + element.D[1] * salidas[1] + element.D[2] * salidas[2]).toString())
+					(element.D[0] * salidas[0] + element.D[1] * salidas[1] + element.D[2] * salidas[2]).toFixed(2).toString())
 			}
 		}
 	});
 
+	if(out.length == 0) out.push("No disponemos de tarifas mejores")
+	
 	return out;
 }
 

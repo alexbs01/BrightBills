@@ -1,4 +1,4 @@
-/*
+    /*
  * SPDX-FileCopyrightText: 2024 Alejandro Bezerra
  * SPDX-FileCopyrightText: 2024 Anton Souto
  * SPDX-FileCopyrightText: 2024 Enrique Adega
@@ -120,6 +120,7 @@ form {
     align-items: center;
     margin-left: 5vw;
     margin-bottom: 2vh;
+    padding-bottom: 2vh;
     width: 90vw; /* Ancho del 45% para dejar espacio para el margen */
     max-width: 90vw; /* Ancho máximo para evitar que los elementos sean demasiado anchos */
     margin-right: 5%; /* Margen derecho entre las columnas */
@@ -139,7 +140,8 @@ form {
     display: flex;
     /*height: 100%;*/
     font-size: 3em;
-    border-radius: 15px; 
+    border-radius: 15px;
+    border: none; 
 }
 
 input {
@@ -157,6 +159,8 @@ input:hover {
 
 ul{
     width: 45%;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
 }
 
 li {
@@ -169,11 +173,13 @@ li {
     border: white;
     /*prueba de antonetiiii*/
     position:relative;
+    align-items: center;
     background: #889ca5;
     border-radius: 15px;
 }
-li:nth-child(odd) {
-    
+
+ul li span{
+    align-self: center;
 }
     
 #Añadir, #Calcular {
@@ -211,13 +217,17 @@ li:nth-child(odd) {
     margin-right: 5vw;
 }
 
+
+
 .appliance button {
-    font-size: 1em;
-    width: 15%;
-    height: 100%;
+    font-size: 0.5em;
+    height: 50%;
+    width: 5%;
+    right: 0%;
     border-radius: 100px;
-    align-items: right;
-    margin-left: auto;
+    position: absolute;
+    left: 82%;
+    background-color: rgb(240, 76, 76);
 }
 
 #Añadir:hover, #Calcular:hover {
@@ -236,20 +246,7 @@ select {
     margin-left: 0;
 }
 
-.delete {
-    background-color: #ff3333; /* Color de fondo rojo */
-    color: #fff; /* Color del texto blanco */
-    border: none; /* Sin borde */
-    padding: 5px 10px; /* Relleno interno */
-    font-size: 12px; /* Tamaño de fuente más pequeño */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    
-    /*position: absolute; /* Establece la posición absoluta para el botón */
-    right: 0; /* Alinea el botón a la derecha del contenedor li */
-    display: inline-block; /* Hace que el botón se comporte como un elemento en línea */
-    border-radius: 50%; /* Hace que el botón tenga bordes redondeados, creando un círculo */
 
-}
 
 /* Estilo adicional para resaltar el botón al pasar el ratón */
 .delete:hover {
@@ -297,7 +294,8 @@ select {
 }
 
 .billInput{
-    margin-bottom: 2%;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
 }
 
 .discrimination-button.active{
@@ -386,7 +384,12 @@ input:checked + .slider:before {
 }
 
 #listaTarifas{
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 2vh;
 }
 
 #resultContainerTarifa {
