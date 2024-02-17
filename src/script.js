@@ -2,11 +2,12 @@ const addButton = document.getElementById("Añadir");
 const list = document.getElementById("Lista");
 const heating = document.getElementById("Tipo de calefaccion");
 const hideableArea = document.getElementById("hideableArea");
-const submitButton = document.getElementById("Calcular");
+const form = document.getElementById("formulario");
 const fixedButton = document.getElementById("boton-fijo");
 const fixedForm = document.getElementById("Form-Fijo");
 const feeButton = document.getElementById("boton-tarifa");
 const feeForm = document.getElementById("Form-Factura");
+const resultContainer = document.getElementById("resultContainer");
 
 
 
@@ -76,10 +77,10 @@ function get_data(form) {
 	let areaType = document.getElementById("Clima").value;
 	var applianceList = [];
 	for (appliance of formList) {
-		applianceList.push(appliance.);
+		var estimateConsumption = appliance.getElementsByTagName("section")[0].value;
+		applianceList.push(estimateConsumption);
 	}
 	let household = document.getElementById("CasaPiso").value;
-
 	return {
 		power: powerCapacity,
 		size: houseSize,
@@ -101,7 +102,6 @@ function calc_consumption(form) {
 	houseData.appliances.forEach(element => {
 		consumo = consumo + element;
 	});
-
 	if (houseData.electricHeating) {
 		consumo = consumo +
 			(houseData.size *
@@ -111,12 +111,15 @@ function calc_consumption(form) {
 	}
 
 	consumo = consumo * ((houseData.inhabitants / 10) + 0.1);
-
-	return consumo;
+	const resultContainer = document.getElementById("resultContainer");
+	resultContainer.textContent = `Result: ${consumo}`;
+	resultContainer.style.display = "flex";
 }
 
-submitButton.addEventListener('click', function (){
-	calc_consumption(self.parentElement.parentElement);
+form.addEventListener('submit', function (event){
+	console.log("a");
+	calc_consumption(self);
+	event.preventDefault();
 })
 
 
