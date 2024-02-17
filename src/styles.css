@@ -108,7 +108,7 @@ form {
     display: flex;
     flex-direction: column;
     margin-left: 5vw;
-    margin-bottom: 5vh;
+    margin-bottom: 3vh;
     width: 40%; /* Ancho del 45% para dejar espacio para el margen */
     max-width: 40vw; /* Ancho máximo para evitar que los elementos sean demasiado anchos */
     margin-right: 5%; /* Margen derecho entre las columnas */
@@ -123,7 +123,8 @@ form {
     width: 90vw; /* Ancho del 45% para dejar espacio para el margen */
     max-width: 90vw; /* Ancho máximo para evitar que los elementos sean demasiado anchos */
     margin-right: 5%; /* Margen derecho entre las columnas */
-    height: 8vh;
+    height: 10vh;
+    font-size: 2em;
 }
 
 .tileInputs *, .electrico * {
@@ -293,6 +294,10 @@ select {
     margin-bottom: 0;
     align-items: center;
 
+}
+
+.discrimination-button{
+    
 }
 
 .discrimination-button.active{
