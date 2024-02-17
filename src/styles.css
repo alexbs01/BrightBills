@@ -300,6 +300,10 @@ select {
     margin-bottom: 2%;
 }
 
+.billInput{
+    margin-bottom: 4%;
+}
+
 .discrimination-button.active{
     background-color: rgb(131, 110, 110);
     font-weight: bold;
