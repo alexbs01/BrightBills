@@ -1,8 +1,10 @@
 :root {
     --gradient-top: #5053a0;
     --gradient-bottom: #372e55;
-    --background-title-color: rgb(22, 15, 148);
+    --background-title-color: rgb(255, 255, 255);
     --title-color: #ffffff;
+    --color-button-header: rgb(64, 22, 141);
+    --color-button-header-hover: rgb(106, 59, 194);
 }
 
 body {
@@ -12,6 +14,7 @@ body {
     height: 100vh;
     background: linear-gradient(var(--gradient-top), var(--gradient-bottom));
     background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 
@@ -26,12 +29,34 @@ header {
     margin-bottom: 1vh;
 }
 
-header h1 {
+.header-button {
     margin: 0;
     font-size: 4em;
     font-weight: bold;
     color: var(--title-color);
     text-align: center;
+    width: 49.8%;
+    height: 100%;
+    background-color: var(--color-button-header);
+    margin-right: auto;
+    border: none;
+}
+
+.header-button:hover {
+    margin: 0;
+    font-size: 4em;
+    font-weight: bold;
+    color: var(--title-color);
+    text-align: center;
+    width: 49.8%;
+    height: 100%;
+    background-color: var(--color-button-header-hover);
+    margin-right: auto;
+    border: none;
+}
+
+.space {
+    border-radius: 6em;
 }
 
 main {
@@ -63,8 +88,6 @@ form {
     display: flex;
     flex-direction: column;
     max-width: 100%;
-    overflow: hidden;
-    max-height: 0px;
     transition: max-height 0.3s ease;
 }
 
@@ -91,17 +114,19 @@ form {
 }
 
 .tileInputs *, .electrico * {
+    display: flex;
     width: 90%;
     height: 75%;
     font-size: 2.5vh;
     font-weight: bold;
 }
 
-button {
+.main-button {
+    display: flex;
     height: 100%;
     font-size: 3em;
-    -webkit-border-radius: 5px;
     border-radius: 15px; 
+
 }
 
 input {
@@ -118,9 +143,17 @@ input:hover {
 }
 
 li {
+    display: flex;
     list-style: none;
     font-size: 3em;
     font-weight: bold;
+    margin: 20px;
+
+    /*prueba de antonetiiii*/
+    position:relative;
+}
+li:nth-child(odd) {
+    background: #0f015e;
 }
 
 #Añadir, #Calcular {
@@ -135,6 +168,7 @@ li {
 }
 
 select {
+    display: flex;
     padding:5px 15px; 
     background:#ffffff; 
     border:0 none;
@@ -143,4 +177,30 @@ select {
     border-radius: 15px; 
     font-size: 1em;
     margin-left: 0;
+}
+
+.delete {
+    background-color: #ff3333; /* Color de fondo rojo */
+    color: #fff; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    padding: 5px 10px; /* Relleno interno */
+    font-size: 12px; /* Tamaño de fuente más pequeño */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    
+    /*position: absolute; /* Establece la posición absoluta para el botón */
+    right: 0; /* Alinea el botón a la derecha del contenedor li */
+    display: inline-block; /* Hace que el botón se comporte como un elemento en línea */
+    border-radius: 50%; /* Hace que el botón tenga bordes redondeados, creando un círculo */
+
+}
+
+/* Estilo adicional para resaltar el botón al pasar el ratón */
+.delete:hover {
+    background-color: #a52a2a; /* Cambia el color de fondo al pasar el ratón */
+}
+
+#Resultado {
+    display: none;
+    background-color: #23a3ca; /* Cambia el color de fondo al pasar el ratón */
+
 }

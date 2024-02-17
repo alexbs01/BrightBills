@@ -2,26 +2,37 @@ const addButton = document.getElementById("Añadir");
 const list = document.getElementById("Lista");
 const heating = document.getElementById("Tipo de calefaccion");
 const hideableArea = document.getElementById("hideableArea");
+const submitButton = document.getElementById("Calcular");
 
 function addToList(){
 	let appliance = document.getElementById("Electrodomesticos");
 	let applianceName = appliance.value;
 	var listItem = document.createElement("li");
 	var nameField = document.createElement('span');
+
 	nameField.textContent = applianceName;
 	listItem.appendChild(nameField);
-	if(!appliance.classList.contains("special")){
-		const labels = ["A", "B", "C", "D", "E", "F", "G"];
-		var applianceLabel = document.createElement("select");
-		for (var i = 0; i < labels.length; i++) {
-			var option = document.createElement("option");
-			option.value = labels[i];
-			option.text = labels[i];
-			applianceLabel.appendChild(option);
-		}
-		listItem.appendChild(applianceLabel);
+	const labels = ["A", "B", "C", "D", "E", "F", "G"];
+	var applianceLabel = document.createElement("select");
+	for (var i = 0; i < labels.length; i++) {
+		var option = document.createElement("option");
+		option.value = labels[i];
+		option.text = labels[i];
+		applianceLabel.appendChild(option);
 	}
-	list.appendChild(listItem);
+	listItem.appendChild(applianceLabel);
+
+	let deleteBtn = document.createElement("button");
+	deleteBtn.classList.add('delete');
+	deleteBtn.innerText = "\u00d7";
+	deleteBtn.addEventListener("click", function(e){
+		e.target.parentElement.remove();
+	}, false);
+	listItem.appendChild(deleteBtn);
+	
+
+	var firstItem = list.firstChild;
+	list.insertBefore(listItem, firstItem);
 }
 addButton.addEventListener('click', function () {
     addToList();
@@ -30,9 +41,11 @@ addButton.addEventListener('click', function () {
 function change_heating(){
 	hideableArea.classList.toggle("hidden");
 	if (heating.value == "No electrico") {
-		hideableArea.style.maxHeight = null;
+		//hideableArea.style.maxHeight = null;
+		hideableArea.style.display = "none";
 	  } else {
-		hideableArea.style.maxHeight = hideableArea.scrollHeight + 'px';
+		//hideableArea.style.maxHeight = hideableArea.scrollHeight + 'px';
+		hideableArea.style.display = "flex";
 	}
 }
 
@@ -40,27 +53,29 @@ heating.addEventListener('change', function (){
 	change_heating();
 })
 
-/*function get_data(form) {
-	let formList = form.getElementsByTagName("appliance");
-	let peopleNumber = ;
+function get_data(form) {
+	let formList = document.getElementsByTagName("appliance");
+	let powerCapacity = document.getElementById("Potencia contratada");
+	let peopleNumber = document.getElementById("Habitantes").value;
 	var houseSize;
-	let hasElectricHeating = ;
+	let hasElectricHeating = heating.value;
 	if (hasElectricHeating) {
-		houseSize = ;
+		houseSize = document.getElementById("metros cuadrados").value;
 	}
 	else {
 		houseSize = 0;
 	}
-	let orientation = ;
-	let isolation = ;
-	let areaType = ;
+	let orientation = document.getElementById("Orientacion").value;
+	let isolation = document.getElementById("Aislamiento").value;
+	let areaType = document.getElementById("Clima").value;
 	var applianceList = [];
 	for (appliance of formList) {
 		applianceList.push(appliance);
 	}
-	let household = ;
+	let household = document.getElementById("CasaPiso").value;
 
 	return {
+		power: powerCapacity,
 		size: houseSize,
 		inhabitants: peopleNumber,
 		electricHeating: hasElectricHeating,
@@ -73,8 +88,7 @@ heating.addEventListener('change', function (){
 }
 
 
-function calc_consumption(button) {
-	let form = button.parentNode;
+function calc_consumption(form) {
 	const houseData = get_data(form);
 
 	var consumo = 0;
@@ -93,7 +107,11 @@ function calc_consumption(button) {
 	consumo = consumo * ((houseData.inhabitants / 10) + 0.1);
 
 	return consumo;
-}*/
+}
+
+submitButton.addEventListener('click', function (){
+	calc_consumption(self.parentElement.parentElement);
+})
 
 /*const url = "https://api.esios.ree.es/archives/70/download_json?date=";
 
