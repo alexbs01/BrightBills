@@ -1,3 +1,10 @@
+// SPDX-FileCopyrightText: 2024 Alejandro Bezerra
+// SPDX-FileCopyrightText: 2024 Anton Souto
+// SPDX-FileCopyrightText: 2024 Enrique Adega
+// SPDX-FileCopyrightText: 2024 Guillen Porto
+//
+// SPDX-License-Identifier: GPL-3.0
+
 function init(){
 	localStorage.setItem("Nevera", "0");
 	localStorage.setItem("Vitroceramica", "0");
