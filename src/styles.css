@@ -23,7 +23,7 @@ header {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    height: 10vh;
+    height: 11vh;
     width: 100vw;
     background: var(--background-title-color);
     margin-bottom: 1vh;
@@ -91,6 +91,11 @@ form {
     transition: max-height 0.3s ease;
 }
 
+#hideableArea label:first-child {
+    width: 20vw;
+    font-size: 1.8em;
+}
+
 .tileInputs {
     display: flex;
     flex-direction: column;
@@ -129,7 +134,7 @@ form {
 }
 
 input {
-    padding:5px 15px; 
+    padding:10px 15px; 
     background:#ffffff; 
     border:0 none;
     cursor:pointer;
@@ -261,6 +266,7 @@ select {
     font-weight: bold;
     margin-bottom: 0;
     align-items: center;
+    width: 100%;
 }
 
 .row > .tileInputs {

@@ -23,7 +23,7 @@ function addToList(){
 	var applianceLabel = document.createElement("select");
 	for (var i = 0; i < labels.length; i++) {
 		var option = document.createElement("option");
-		option.value = (0.7 + i/10) * appliance.v;
+		option.value = (0.7 + i/10) * appliance.value;
 		option.text = labels[i];
 		applianceLabel.appendChild(option);
 	}
@@ -36,7 +36,7 @@ function addToList(){
 		e.target.parentElement.remove();
 	}, false);
 	listItem.appendChild(deleteBtn);
-	
+	listItem.classList.add("appliance");
 
 	var firstItem = list.firstChild;
 	list.insertBefore(listItem, firstItem);
@@ -61,8 +61,8 @@ heating.addEventListener('change', function (){
 })
 
 function get_data(form) {
-	let formList = document.getElementsByTagName("appliance");
-	let powerCapacity = document.getElementById("Potencia contratada");
+	//let formList = document.getElementsByClassName("appliance");
+	let powerCapacity = document.getElementById("Potencia Contratada").value;
 	let peopleNumber = document.getElementById("Habitantes").value;
 	var houseSize;
 	let hasElectricHeating = heating.value;
@@ -76,9 +76,14 @@ function get_data(form) {
 	let isolation = document.getElementById("Aislamiento").value;
 	let areaType = document.getElementById("Clima").value;
 	var applianceList = [];
-	for (appliance of formList) {
-		var estimateConsumption = appliance.getElementsByTagName("section")[0].value;
+	let prices = document.querySelectorAll("ul li select");
+	/*for(var i in formList){
+		//var appliance = formList[i];
+		var estimateConsumption = formList[i].querySelector("select").value;
 		applianceList.push(estimateConsumption);
+	}*/
+	for(var i in prices){
+		applianceList.push(prices[i].v);
 	}
 	let household = document.getElementById("CasaPiso").value;
 	return {
@@ -107,12 +112,12 @@ function calc_consumption(form) {
 			(houseData.size *
 				houseData.orientation *
 				houseData.insulation *
-				houseData.zone * 116) * houseData.household ? 1 : 0.75;
+				houseData.zone * 116) * houseData.household;
 	}
 
-	consumo = consumo * ((houseData.inhabitants / 10) + 0.1);
+	consumo = consumo * ((houseData.inhabitants / 10) + 0.1)/1000;
 	const resultContainer = document.getElementById("resultContainer");
-	resultContainer.textContent = `Result: ${consumo}`;
+	resultContainer.textContent = `Result: ${consumo} kWh`;
 	resultContainer.style.display = "flex";
 }
 
