@@ -152,7 +152,7 @@ li {
     position:relative;
 }
 li:nth-child(odd) {
-    background: #0f015e;
+    background: #dae9f0;
 }
 
 #Añadir, #Calcular {
@@ -214,4 +214,12 @@ select {
     display: none;
     background-color: #23a3ca; /* Cambia el color de fondo al pasar el ratón */
 
+}
+
+.active{
+    background-color: #080a49;
+}
+
+#Form-Factura{
+    display: none;
 }

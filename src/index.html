@@ -3,15 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="styles.css">
-        <title>Calculadora de Tipo Fijo Recomendado</title>
+        <title>Tu mejor factura</title>
     </head>
     <body>
         <header>
-            <button class="header-button" type = "button" id = "fijo">Fijo</button>
+            <button class="header-button active" type = "button" id = "boton-fijo">Fijo</button>
             <div class="space"></div>
-            <button class="header-button" type = "button" id = "tarifa">Tarifa</button>
+            <button class="header-button" type = "button" id = "boton-tarifa">Tarifa</button>
         </header>
         <main>
+            <div id = "Form-Fijo">
             <form method="get">
                 <div class="row">
                     <div class="tileInputs">
@@ -32,7 +33,7 @@
                         </select>
                     </div>
                 </div>
-                <div id = "hideableArea"    >
+                <div id = "hideableArea">
                     <div class = "row">
                         <div class="tileInputs">
                             <label for="CasaPiso"> Tipo de vivienda:</label>
@@ -107,10 +108,113 @@
                 </div>
 
                 <div>
-                    <p id="Resultado" name = "Resultado">Resultado </p>
+                    <p id="Resultado" name = "Resultado">Resultado>: </p>
                 </div>
                 
             </form>
+           </div>
+           <div id = "Form-Factura">
+                <form method="get">
+                <div class="row">
+                    <div id = "">
+                        <label for="Habitantes">Habitantes:</label>
+                        <input type="number" id="Habitantes" name="Habitantes" min="0" required>
+                    </div>
+                </div>
+                <div class = "row">
+                    <div class="tileInputs">
+                        <label for="Tipo de calefaccion"> Tipo de calefacción:</label>
+                        <select id= "Tipo de calefaccion" name = "Tipo de calefacción">
+                            <option value = "Electrico"> Eléctrico</option>
+                            <option value = "No electrico"> No electrico</option>
+                        </select>
+                    </div>
+                </div>
+            <div id = "hideableArea"    >
+                <div class = "row">
+                    <div class="tileInputs">
+                        <label for="CasaPiso"> Tipo de vivienda:</label>
+                        <select id= "CasaPiso" name = "CasaPiso">
+                            <option value = "Casa"> Casa</option>
+                            <option value = "Piso"> Piso</option>
+                        </select>
+                    </div>
+                    <div class="tileInputs">
+                        <label for="Clima"> Tipo de clima:</label>
+                        <select id= "Clima" name = "Clima">
+                            <option value = "Muy Frío"> Muy Frío</option>
+                            <option value = "Frío"> Frío</option>
+                            <option value = "Normal"> Normal</option>
+                            <option value = "Cálido"> Cálido</option>
+                            <option value = "Muy cálido"> Muy cálido</option>
+                        </select>
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <div class="tileInputs">
+                        <label for="metros cuadrados">m<sup>2</sup></label>
+                        <input type="number" id="metros cuadrados" name="metros cuadrados" min="0" required>
+                    </div>
+                    <div class = "tileInputs">
+                        <label for="Orientacion">Orientación</label>
+                        <select id= "Orientacion" name = "Orientación">
+                            <option value = "Norte"> Norte</option>
+                            <option value = "Sur"> Sur</option>
+                            <option value = "Este"> Este</option>
+                            <option value = "Oeste"> Oeste</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tileInputs">
+                        <label for="Aislamiento">Aislamiento</label>
+                        <select id= "Aislamiento" name = "Aislamiento">
+                            <option value = "Bueno"> Bueno</option>
+                            <option value = "Sencillo"> Sencillo</option>
+                            <option value = "Sin aislamiento"> Sin aislamiento</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="electrico">
+                <label for="Electrodomesticos"> Escoge un electrodoméstico:</label>
+                <select id= "Electrodomesticos" name = "Electrodomesticos">
+                    <option value = "1500"> Vitroceramica</option>
+                    <option value = "1200"> Microondas</option>
+                    <option value = "1500"> Horno</option>
+                    <option value = "1850"> Lavavajillas</option>
+                    <option value = "2000"> Lavadora</option>
+                    <option value = "270"> Secadora</option>
+                    <option value = "1500"> Plancha</option>
+                    <option value = "1450"> Aire Acondicionado</option>
+                </select>
+            </div>
+            
+            <div class="tileInputs">
+                <button class="main-button" type = "button" id = "Añadir">Añadir</button>
+            </div>
+                
+            <div>
+                <ul id = "Lista"></ul>
+            </div>
+
+            <div class="tileInputs">
+                <input id="Calcular" type="submit" value="Calcular">
+            </div>
+
+            <div>
+                <p id="Resultado" name = "Resultado">Resultado </p>
+            </div>
+            
+        </form>
+
+
+           <div>
+
+           </div>
+
         </main>
         <script src="script.js"></script>
     </body>

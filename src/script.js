@@ -3,6 +3,12 @@ const list = document.getElementById("Lista");
 const heating = document.getElementById("Tipo de calefaccion");
 const hideableArea = document.getElementById("hideableArea");
 const submitButton = document.getElementById("Calcular");
+const fixedButton = document.getElementById("boton-fijo");
+const fixedForm = document.getElementById("Form-Fijo");
+const feeButton = document.getElementById("boton-tarifa");
+const feeForm = document.getElementById("Form-Factura");
+
+
 
 function addToList(){
 	let appliance = document.getElementById("Electrodomesticos");
@@ -16,7 +22,7 @@ function addToList(){
 	var applianceLabel = document.createElement("select");
 	for (var i = 0; i < labels.length; i++) {
 		var option = document.createElement("option");
-		option.value = 0.7 + i/10;
+		option.value = (0.7 + i/10) * appliance.v;
 		option.text = labels[i];
 		applianceLabel.appendChild(option);
 	}
@@ -70,7 +76,7 @@ function get_data(form) {
 	let areaType = document.getElementById("Clima").value;
 	var applianceList = [];
 	for (appliance of formList) {
-		applianceList.push(appliance);
+		applianceList.push(appliance.);
 	}
 	let household = document.getElementById("CasaPiso").value;
 
@@ -111,6 +117,29 @@ function calc_consumption(form) {
 
 submitButton.addEventListener('click', function (){
 	calc_consumption(self.parentElement.parentElement);
+})
+
+
+function goToFeeTab(){
+	feeButton.classList.add("active");
+	fixedButton.classList.remove("active");
+	feeForm.style.display = "flex";
+	fixedForm.style.display = "none";
+}
+
+feeButton.addEventListener('click', function (){
+	goToFeeTab();
+})
+
+function goToFixedTab(){
+	feeButton.classList.remove("active");
+	fixedButton.classList.add("active");
+	feeForm.style.display = "none";
+	fixedForm.style.display = "flex";
+}
+
+fixedButton.addEventListener('click', function (){
+	goToFixedTab();
 })
 
 /*const url = "https://api.esios.ree.es/archives/70/download_json?date=";
