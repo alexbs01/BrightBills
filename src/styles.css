@@ -9,9 +9,11 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: 100vh;
     background: linear-gradient(var(--gradient-top), var(--gradient-bottom));
+    background-attachment: fixed;
 }
+
 
 header {
     display: flex;
@@ -52,9 +54,18 @@ form {
 .row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
     margin-bottom: 2vh;
+}
+
+#hideableArea{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 0px;
+    transition: max-height 0.3s ease;
 }
 
 .tileInputs {
@@ -86,6 +97,13 @@ form {
     font-weight: bold;
 }
 
+button {
+    height: 100%;
+    font-size: 3em;
+    -webkit-border-radius: 5px;
+    border-radius: 15px; 
+}
+
 input {
     padding:5px 15px; 
     background:#ffffff; 
@@ -101,6 +119,28 @@ input:hover {
 
 li {
     list-style: none;
-    font-size: 4em;
+    font-size: 3em;
+    font-weight: bold;
 }
 
+#Añadir, #Calcular {
+    width: 100%;
+    height: 100%;
+    font-size: 3em;
+    background: #ffffff;
+}
+
+#Añadir:hover, #Calcular:hover {
+    background: #f2f2f2;
+}
+
+select {
+    padding:5px 15px; 
+    background:#ffffff; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 15px; 
+    font-size: 1em;
+    margin-left: 0;
+}

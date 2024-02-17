@@ -1,5 +1,7 @@
 const addButton = document.getElementById("Añadir");
 const list = document.getElementById("Lista");
+const heating = document.getElementById("Tipo de calefaccion");
+const hideableArea = document.getElementById("hideableArea");
 
 function addToList(){
 	let appliance = document.getElementById("Electrodomesticos");
@@ -25,6 +27,18 @@ addButton.addEventListener('click', function () {
     addToList();
 })
 
+function change_heating(){
+	hideableArea.classList.toggle("hidden");
+	if (heating.value == "No electrico") {
+		hideableArea.style.maxHeight = null;
+	  } else {
+		hideableArea.style.maxHeight = hideableArea.scrollHeight + 'px';
+	}
+}
+
+heating.addEventListener('change', function (){
+	change_heating();
+})
 
 /*function get_data(form) {
 	let formList = form.getElementsByTagName("appliance");
@@ -81,7 +95,7 @@ function calc_consumption(button) {
 	return consumo;
 }*/
 
-const url = "https://api.esios.ree.es/archives/70/download_json?date=";
+/*const url = "https://api.esios.ree.es/archives/70/download_json?date=";
 
 function fijaToVariabol(consumos, startDate, endDate, cost) {
 	var prices = [];
@@ -117,4 +131,4 @@ function fijaToVariabol(consumos, startDate, endDate, cost) {
 	});
 
 	
-}
+}*/
